@@ -1,0 +1,7 @@
+variables:
+  VM_2_addr: 132.72.105.212
+  A_port: 5555
+  B_duration: 4 
+  C_report: 2
+  MY_FILE: iperf_report.txt
+  protocol: TCP
