@@ -1,0 +1,58 @@
+# service
+apiVersion: v1
+kind: Service
+metadata:
+    name: hw2-service
+    labels:
+        run: hw2-deploy
+spec:
+    ports:
+    - port: 30555
+      targetPort: 80
+    selector:
+        run: hw2-deploy
+---     
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hw2-deploy
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            run: hw2-deploy
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxUnavailable: 1
+            maxSurge: 1
+    template:
+        metadata:
+            labels:
+                run: hw2-deploy
+        spec:
+            containers:
+            - name: hw2-deploy
+              image: ronhad/ron_hadad:im_ver1_302788013_203779640
+              ports:
+              - containerPort: 80
+              resources:
+                limits:
+                    cpu: 10m 
+                requests:
+                    cpu: 6m
+---                     
+# HorizontalPodAutoscaler
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hw2-autoscaling 
+spec:
+    maxReplicas: 100
+    minReplicas: 1
+    scaleTargetRef:
+        kind: Deployment
+        name: hw2-deploy
+        apiVersion: apps/v1
+    targetCPUUtilizationPercentage: 50
