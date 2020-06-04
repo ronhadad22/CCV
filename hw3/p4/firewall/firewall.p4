@@ -203,12 +203,22 @@ control MyIngress(inout headers hdr,
                         // TODO: this packet is part of an outgoing TCP connection.
                         //   We need to set the bloom filter if this is a SYN packet
                         //   E.g. bloom_filter_1.write(<index>, <value>);
+						   if (hdr.tcp.syn == 1){
+                            bloom_filter_1.write(reg_pos_one, 1);
+                            bloom_filter_2.write(reg_pos_two, 1);
+                        }
                     }
                     // Packet comes from outside
                     else if (direction == 1){
                         // TODO: this packet is part of an incomming TCP connection.
                         //   We need to check if this packet is allowed to pass by reading the bloom filter
                         //   E.g. bloom_filter_1.read(<value>, <index>);
+						bloom_filter_1.read(reg_val_one, reg_pos_one);
+                        bloom_filter_2.read(reg_val_two, reg_pos_two);
+                        // only allow flow to pass if both entries are set
+                        if (reg_val_one != 1 || reg_val_two != 1){
+                            drop();
+                        }
                     }
                 }
             }
