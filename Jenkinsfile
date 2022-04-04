@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
+    agent any
     stages {
         stage('Example Build') {
              when {
