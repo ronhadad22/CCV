@@ -28,5 +28,5 @@ kubectl delete service/hw2-service
 kubectl delete deployment.apps/hw2-deploy 
 kubectl delete hpa/hw2-autoscaling 
 
-echo 'Great Success'
+echo 'Great Succesds'
 
