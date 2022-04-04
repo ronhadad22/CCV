@@ -2,15 +2,16 @@ pipeline {
     agent any
     stages {
         stage('Example Build') {
-             when {
+            when {
                 changeset "**/hw1/**"
             }
             steps {
                 dir('hw1') {
                   sh 'echo ron' 
-                  'job test' : { build job: 'job test'; }
+
                 }
             }
+            'job test' : { build job: 'job test'; }
         }
     }
 }
