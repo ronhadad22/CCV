@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Example Build') {
              when {
-                changeset "**/hw1/*.sh"
+                changeset "**/hw1/**"
             }
             steps {
                 dir('hw1') {
