@@ -7,7 +7,7 @@ pipeline {
                 changeset "**/hw1/**"
             }
             steps {
-                build(job: 'test', propagate: true, wait: true)
+                build(job: 'test/master', propagate: true, wait: true)
                 dir('hw1') {
                   sh 'echo ron' 
                 build job: 'test', parameters: [
