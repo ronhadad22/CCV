@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Example Build') {
+            build(job: 'test', propagate: true, wait: true)
             when {
                 changeset "**/hw1/**"
             }
