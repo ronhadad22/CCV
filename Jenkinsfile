@@ -7,7 +7,8 @@ pipeline {
             }
             steps {
                 dir('hw1') {
-                  sh 'echo ron'    
+                  sh 'echo ron' 
+                  'job test' : { build job: 'job test'; }
                 }
             }
         }
