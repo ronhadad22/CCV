@@ -8,10 +8,12 @@ pipeline {
             steps {
                 dir('hw1') {
                   sh 'echo ron' 
+                build job: 'test', parameters: [
+                string(name: 'param1', value: "value1")
+                ]
 
                 }
             }
-            'job test' : { build job: 'job test'; }
         }
     }
 }
