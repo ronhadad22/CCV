@@ -14,7 +14,7 @@ B_duration=$config_variables_B_duration
 C_report=$config_variables_C_report
 file=$config_variables_MY_FILE
 
-echo "starting ssh session with vm2"
+echo "starting ssh session ron with vm2"
 #open ssh session with vm2 and start iperf3 server on it
 ssh root@$vm2_ip "iperf3 -s -p $A_port -1 >> $file ; exit;" &
 sleep 2;
