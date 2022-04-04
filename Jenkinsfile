@@ -11,7 +11,7 @@ pipeline {
                 
                 dir('hw1') {
                   sh 'echo ron' 
-                build job: 'test', parameters: [
+                build job: 'testtt/master', parameters: [
                 string(name: 'param1', value: "value1")
                 ]
 
