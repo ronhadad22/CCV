@@ -6,10 +6,10 @@ pipeline {
         stage('Example Build') {
             steps {
                 build(job: 'test/just-test', wait: false, propagate: false)
-                echo "fsdfs ${DF}"
+                echo "fsdfs ${BR_JOB}"
                 dir('hw1') {
                 sh 'echo ron' 
-                build job: 'testtt/${BR_JOB}', parameters: [
+                build job: "testtt/${BR_JOB}", parameters: [
                 string(name: 'param1', value: "value1")
                 ]
                 }
