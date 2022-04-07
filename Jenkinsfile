@@ -1,11 +1,12 @@
 def DF=env.BRANCH_NAME
 def BR_JOB="master"
+
 pipeline {
     agent any
     stages {
         stage('Example Build') {
             steps {
-                build(job: 'test/just-test', wait: false, propagate: false)
+//                build(job: 'test/just-test', wait: false, propagate: false)
                 echo "fsdfs ${BR_JOB}"
                 dir('hw1') {
                 sh 'echo ron' 
@@ -16,7 +17,7 @@ pipeline {
         stage('FINDSF') {
             steps {
                 sh 'echo ron' 
-                }
+            }
         }
     }//stages
 }//pipeline
