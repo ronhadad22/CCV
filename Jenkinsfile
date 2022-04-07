@@ -6,7 +6,7 @@ pipeline {
         stage('Example Build') {
             steps {
                 build(job: 'test/just-test', wait: false, propagate: false)
-                echo "${DF}"
+                echo "${{DF}}"
                 dir('hw1') {
                 sh 'echo ron' 
                 build job: 'testtt/master', parameters: [
