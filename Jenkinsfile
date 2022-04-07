@@ -14,6 +14,12 @@ pipeline {
                 ]
                 }
             }
-        }
+        }//example build
+        stage('FINDSF') {
+            steps {
+                sh 'echo ron' 
+                }
+            }
+        }//example build
     }
 }
