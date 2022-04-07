@@ -9,17 +9,14 @@ pipeline {
                 echo "fsdfs ${BR_JOB}"
                 dir('hw1') {
                 sh 'echo ron' 
-                build job: "testtt/${BR_JOB}", parameters: [
-                string(name: 'param1', value: "value1")
-                ]
+                build job: "testtt/${BR_JOB}", parameters: [string(name: 'param1', value: "value1")]
                 }
-            }
+            }//STEPS
         }//example build
         stage('FINDSF') {
             steps {
                 sh 'echo ron' 
                 }
-            }
-        }//example build
-    }
-}
+        }
+    }//stages
+}//pipeline
