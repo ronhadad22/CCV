@@ -10,7 +10,6 @@ pipeline {
                 parallel(
 //                build(job: 'test/just-test', wait: false, propagate: false)
 //                echo "fsdfs ${BR_JOB}"        
-                sh 'echo ron' 
                 build job: "testtt/${DF}", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1")]
                 )
             }//STEPS
