@@ -3,10 +3,10 @@ def BR_JOB="master"
 
 pipeline {
     agent any
-    
+
     stages {
         parallel {
-            stage('Example Build') {
+        stage('Example Build') {
                 steps {
     //                build(job: 'test/just-test', wait: false, propagate: false)
                     echo "fsdfs ${BR_JOB}"
@@ -16,10 +16,10 @@ pipeline {
                     }
                 }//STEPS
             }//example build
-            stage('FINDSF') {
-                steps {
-                    sh 'echo ron' 
-                }
+        }
+        stage('FINDSF') {
+            steps {
+                sh 'echo ron' 
             }
         }    
     }//stages
