@@ -11,9 +11,8 @@ pipeline {
             }
             steps {
                 build(job: 'test/master', wait: false, propagate: false)
-                
+                echo "${{DF}}"
                 dir('hw1') {
-                    echo "${{DF}}"
                 sh 'echo ron' 
                 build job: 'testtt/master', parameters: [
                 string(name: 'param1', value: "value1")
