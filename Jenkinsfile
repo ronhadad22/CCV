@@ -10,7 +10,7 @@ pipeline {
                 echo "fsdfs ${BR_JOB}"
                 dir('hw1') {
                 sh 'echo ron' 
-                build job: "testtt/${DF}", wait: false, propagate: false , parameters: [string(name: 'param1' ,value: "value1")]
+                build job: "testtt/${DF}", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")]
                 }
             }//STEPS
         }//example build
