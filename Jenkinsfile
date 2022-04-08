@@ -19,12 +19,25 @@ pipeline {
                     sh "echo projectToBuild: ${projectsToBuild}"
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
-                                    "triggerBuildBranch" : {  
+                                    'triggerBuildBranch' : {  
                                         build job: "testtt/${p}", wait: false, propagate: true
                                     } 
                                 } 
                             }
                     parallel parallelStages 
+                    
+//                    projectsToBuild.each { p ->
+//                        parallelStages[p] = {
+//                            node(chosenAgent) {
+//                                dir(p) {
+//                                   stage(p) {
+//                                        sh('make && make build')
+//                                    }
+//                                }
+//                            }
+//                        } 
+//                    }    
+                    
                 }
             }
         }
