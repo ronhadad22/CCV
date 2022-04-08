@@ -1,6 +1,6 @@
 def parallelStages = [:]
 def projectsToBuild = []
-def chosenAgent = “master”
+//def chosenAgent = “master”
 def DF=env.BRANCH_NAME
 
 pipeline { 
