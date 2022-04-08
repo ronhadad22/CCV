@@ -19,6 +19,7 @@ pipeline {
                 parallel(
                     "triggerBuildBranch" : {  
                         build job: "testtt/${DF}", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
+//                        build(testtt/${DF}", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1"))
                     }, 
                     "triggerBuildMaster" : {  
                         build job: "testtt/master", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
