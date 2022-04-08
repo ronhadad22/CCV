@@ -23,7 +23,7 @@ pipeline {
                                         build job: "testtt/${p}", wait: false, propagate: true
  //                                   } 
                                 }
-                            sh "echo parallelStages[${p}]: ${parallelStages[${p}]}"
+                            sh "echo parallelStages: ${parallelStages[hw1]}"
                             }
                     
                     sh "echo parallelStages: ${parallelStages}"
