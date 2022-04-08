@@ -29,18 +29,6 @@ pipeline {
  //                   sh "echo parallelStages: ${parallelStages}"
                     parallel parallelStages 
                     
-//                    projectsToBuild.each { p ->
-//                        parallelStages[p] = {
-//                            node(chosenAgent) {
-//                                dir(p) {
-//                                   stage(p) {
-//                                        sh('make && make build')
-//                                    }
-//                                }
-//                            }
-//                        } 
-//                    }    
-                    
                 }
             }
         }
