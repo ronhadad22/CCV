@@ -22,9 +22,7 @@ pipeline {
                     }, 
                     "triggerBuildMaster" : {  
                         build job: "testtt/master", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
-                    }
-               
-                
+                    })
             }//STEPS
         }//example build
 
