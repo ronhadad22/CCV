@@ -18,16 +18,11 @@ pipeline {
 //                echo "fsdfs ${BR_JOB}"
                 parallel(
                     "triggerBuildBranch" : {  
-                        stage("stage A") {
-                            echo "This is branch a"
-                            build job: "testtt/${DF}", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
+                        build job: "testtt/${DF}", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
 //                        build(testtt/${DF}", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1"))
-                        }  
                     }, 
-                    "triggerBuildMaster" : { 
-                        stage("stage B") {
-                            build job: "testtt/parallel-pipeline", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
-                        }
+                    "triggerBuildMaster" : {  
+                        build job: "testtt/master", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")] 
                     })
             }//STEPS
         }//example build
