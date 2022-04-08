@@ -18,7 +18,7 @@ pipeline {
                     }                    
                     sh "echo projectToBuild: ${projectsToBuild}"
                     
-                    projectsToBuild = ["parallel-new-syntax","parallel-pipeline"]
+                    projectsToBuild = ["parallel-new-syntax","parallel-pipeline","master"]
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
  //                                   'triggerBuildBranch' : {  
