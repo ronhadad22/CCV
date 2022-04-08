@@ -16,7 +16,7 @@ pipeline {
                             projectsToBuild.add(f.name)
                         }
                     }                    
-
+                    sh "echo projectToBuild: ${projectsToBuild}"
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
                             node() {
@@ -28,8 +28,10 @@ pipeline {
                             }
                         } 
                     }
-
-                    parallel parallelStages
+                    parallel(
+                        projectsToBuild.each { p ->
+                            build job: "testtt/${p}", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")]                    
+                    )
                 }
             }
         }
