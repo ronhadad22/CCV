@@ -26,10 +26,14 @@ pipeline {
                     })
             }//STEPS
         }//example build
-
         stage('FINDSF') {
+            when{
+                expression {
+                    !("SUCCESS".equals(currentBuild.previousBuild.result))
+                }
+            }
             steps {
-                sh 'echo ron' 
+                sh 'echo last build was failed' 
             }
         }  
         stage('CHECK-PIPE') {
