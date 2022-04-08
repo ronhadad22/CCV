@@ -20,7 +20,7 @@ pipeline {
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
  //                                   'triggerBuildBranch' : {  
-                                        build job: "testtt/${p}", wait: false, propagate: true
+                                        build job: "testtt/${p}", wait: true, propagate: true
  //                                   } 
                                 }
  //                           sh "echo parallelStages: ${parallelStages[hw1]}"
@@ -28,6 +28,7 @@ pipeline {
                     
  //                   sh "echo parallelStages: ${parallelStages}"
                     parallel parallelStages 
+//                    failFast true
                     
                 }
             }
