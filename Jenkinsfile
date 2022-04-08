@@ -24,6 +24,8 @@ pipeline {
  //                                   } 
                                 } 
                             }
+                    
+                    sh "echo projectToBuild: ${parallelStages}"
                     parallel parallelStages 
                     
 //                    projectsToBuild.each { p ->
