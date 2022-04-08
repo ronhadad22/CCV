@@ -19,7 +19,7 @@ pipeline {
 
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
-                            node(chosenAgent) {
+                            node() {
                                 dir(p) {
                                     stage(p) {
                                         sh('echo dodo')
