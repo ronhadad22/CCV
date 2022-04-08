@@ -1,6 +1,7 @@
 def parallelStages = [:]
 def projectsToBuild = []
 def chosenAgent = “master”
+def DF=env.BRANCH_NAME
 
 pipeline { 
     agent any 
@@ -21,7 +22,7 @@ pipeline {
                             node(chosenAgent) {
                                 dir(p) {
                                     stage(p) {
-                                        sh('make && make build')
+                                        sh('echo dodo')
                                     }
                                 }
                             }
