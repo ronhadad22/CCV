@@ -19,19 +19,12 @@ pipeline {
                     sh "echo projectToBuild: ${projectsToBuild}"
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
-                            node() {
-                                dir(p) {
-                                    stage(p) {
-                                        sh('echo dodo')
-                                    }
-                                }
+                                    "triggerBuildBranch" : {  
+                                        build job: "testtt/${p}", wait: false, propagate: true
+                                    } 
+                                } 
                             }
-                        } 
-                    }
-                    parallel(
-                        projectsToBuild.each { p ->
-                            build job: "testtt/${p}", wait: false, propagate: true , parameters: [string(name: 'param1' ,value: "value1")]                    
-                    )
+                    parallel parallelStages 
                 }
             }
         }
