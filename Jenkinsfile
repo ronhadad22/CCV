@@ -21,9 +21,9 @@ pipeline {
                     projectsToBuild = ["parallel-new-syntax","parallel-pipeline","master"]
                     projectsToBuild.each { p ->
                         parallelStages[p] = {
- //                                   'triggerBuildBranch' : {  
+                                   triggerBuildBranch : {  
                                         build job: "testtt/${p}", wait: true, propagate: true
- //                                   } 
+                                    } 
                                 }
  //                           sh "echo parallelStages: ${parallelStages[hw1]}"
                             }
