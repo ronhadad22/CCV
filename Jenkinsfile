@@ -22,7 +22,8 @@ pipeline {
  //                                   'triggerBuildBranch' : {  
                                         build job: "testtt/${p}", wait: false, propagate: true
  //                                   } 
-                                } 
+                                }
+                            sh "echo parallelStages[${p}]: ${parallelStages[${p}]}"
                             }
                     
                     sh "echo parallelStages: ${parallelStages}"
