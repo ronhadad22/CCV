@@ -1,31 +1,36 @@
-def DF=env.BRANCH_NAME
-def BR_JOB="master"
+def parallelStages = [:]
+def projectsToBuild = []
+def chosenAgent = “master”
 
-pipeline {
-    agent any
-
-    stages {
-        parallel(
-            stage('StageA') {
-                echo "This is branch a"
-            },
-            stage('StageB') {
-                echo "This is branch b"
-            }
-          )
-        stage('Example Build') {
+pipeline { 
+    agent any 
+    stages { 
+        stage("Compile & Build Binary") { 
             steps {
-//                build(job: 'test/just-test', wait: false, propagate: false)
-//                echo "fsdfs ${BR_JOB}"        
-                build job: "testtt/${DF}", wait: true, propagate: true , parameters: [string(name: 'param1' ,value: "value1")]
-                
-            }//STEPS
-        }//example build
+                script {
+                    // Find directories (for simplicity’s sake, all directories)
+                    def files = findFiles()
+                    files.each { f ->
+                        if (f.directory) {
+                            projectsToBuild.add(f.name)
+                        }
+                    }                    
 
-        stage('FINDSF') {
-            steps {
-                sh 'echo ron' 
+                    projectsToBuild.each { p ->
+                        parallelStages[p] = {
+                            node(chosenAgent) {
+                                dir(p) {
+                                    stage(p) {
+                                        sh('make && make build')
+                                    }
+                                }
+                            }
+                        } 
+                    }
+
+                    parallel parallelStages
+                }
             }
-        }    
-    }//stages
-}//pipeline
+        }
+    }
+}
