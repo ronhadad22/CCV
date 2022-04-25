@@ -28,7 +28,6 @@ if [ "$protocol" = "TCP" ];  then
     iperf3 -c $vm2_ip -u -p $A_port -t $B_duration --i $C_report > $file & 
 fi
 
-
 #print to screen
 sleep 2;
 sleep $B_duration;
