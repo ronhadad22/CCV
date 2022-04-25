@@ -7,7 +7,10 @@ pipeline {
         stage('Example Build') {
             
             when {
-                changeset "**/hw1/**"
+                allOf{ 
+                    expression{ changeset "**/hw2/**"  }
+                    changeset "**/hw1/**"
+                        }
             }
             steps {
                 build(job: 'test/master', wait: false, propagate: false)
