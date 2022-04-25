@@ -9,7 +9,6 @@ pipeline {
             when {
                 allOf{ 
                     expression{ changeset "**/hw2/**"  }
-                    changeset "**/hw1/**"
                         }
             }
             steps {
