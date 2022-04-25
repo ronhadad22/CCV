@@ -3,6 +3,7 @@
 #path to yaml parsing function
 . /home/b/bb/bbb/parser.sh
 
+
 #parse yaml file
 eval $(parser var.yml "config_");
 
