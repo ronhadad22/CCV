@@ -20,7 +20,7 @@ pipeline {
             when {
                     allOf{ 
                         changeset "**/hw2/**"
-                        sh "echo leeee"
+                        script{sh "echo leeee"}
                     }
             }
             steps {
