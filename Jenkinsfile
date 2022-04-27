@@ -19,7 +19,7 @@ pipeline {
             
             when {
                     allOf{ 
-                        expression { return changeset "**/hw2/**" }
+                        expression { true == changeset "**/hw2/**" }
                     }
             }
             steps {
