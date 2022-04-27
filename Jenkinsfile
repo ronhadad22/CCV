@@ -19,10 +19,12 @@ pipeline {
         stage('Example Build') {
             
             when {
-                    allOf{ 
+                allOf{ 
+                    script{
 //                        expression{env.BRANCH_NAME == 'master'}
                         parallel parallelStages  
                     }
+                }
             }
             steps {
  //               build(job: 'test/master', wait: false, propagate: false)
