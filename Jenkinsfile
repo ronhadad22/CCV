@@ -1,6 +1,7 @@
 def DF=env.BRANCH_NAME
 def parallelStages = [:]
 def projectsToBuild = []
+
 pipeline {
     agent any
     stages {
@@ -20,6 +21,7 @@ pipeline {
             when {
                     allOf{ 
                         expression{env.BRANCH_NAME == 'master'}
+                        DF =  changeset "**/hw2/**"    
                     }
             }
             steps {
