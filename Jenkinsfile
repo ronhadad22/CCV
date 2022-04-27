@@ -4,7 +4,7 @@ def parallelStages = [:]
 pipeline {
     agent any
     stages {
-        stage(){
+        stage('fdd'){
             steps{
                  projectsToBuild = ["hw1","hw2"]
                  projectsToBuild.each { p ->
