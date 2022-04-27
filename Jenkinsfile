@@ -18,9 +18,9 @@ pipeline {
         stage('Example Build') {
             
             when {
+                    sh "echo leeee"
                     allOf{ 
                         changeset "**/hw2/**"
-                        expression{sh "echo leeee"}
                     }
             }
             steps {
