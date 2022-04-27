@@ -21,7 +21,7 @@ pipeline {
                 expresion{
                     allOf{ 
                         script{
-                            parallelStages
+                            changeset "**/hw2/**" 
                             }
                     }
                 }
