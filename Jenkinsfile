@@ -19,7 +19,7 @@ pipeline {
             
             when {
                     allOf{ 
-                        expresion {changeset "**/hw2/**"} 
+                        expression {changeset "**/hw2/**"} 
                     }
             }
             steps {
