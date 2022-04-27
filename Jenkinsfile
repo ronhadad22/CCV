@@ -19,7 +19,7 @@ pipeline {
             
             when {
                     allOf{ 
-                        changeset "**/hw2/**" 
+                        expression{env.BRANCH_NAME != 'master'}
                     }
             }
             steps {
