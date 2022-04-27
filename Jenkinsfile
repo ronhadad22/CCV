@@ -18,13 +18,9 @@ pipeline {
         stage('Example Build') {
             
             when {
-                expresion{
                     allOf{ 
-                        script{
-                            changeset "**/hw2/**" 
-                            }
+                        expresion {changeset "**/hw2/**"} 
                     }
-                }
             }
             steps {
  //               build(job: 'test/master', wait: false, propagate: false)
