@@ -10,7 +10,7 @@ pipeline {
                 script {
                  projectsToBuild = ["hw1","hw2"]
                  projectsToBuild.each { p ->
-                     parallelStages[p] =  changeset "**/${p}/**"  
+                     parallelStages[p] = { changeset "**/${p}/**" } 
  //                           sh "echo parallelStages: ${parallelStages[hw1]}"
                  }
               }
@@ -20,9 +20,11 @@ pipeline {
             
             when {
                 allOf{ 
+                    expression{
                     script{
 //                        expression{env.BRANCH_NAME == 'master'}
                         parallel parallelStages  
+                    }
                     }
                 }
             }
