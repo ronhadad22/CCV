@@ -9,7 +9,7 @@ pipeline {
                 script {
                  projectsToBuild = ["hw1","hw2"]
                  projectsToBuild.each { p ->
-                   parallelStages[p] = expression{ changeset "**/hw2/**"  }
+                   parallelStages[p] =  changeset "**/hw2/**"  
  //                           sh "echo parallelStages: ${parallelStages[hw1]}"
                  }
               }
