@@ -18,10 +18,12 @@ pipeline {
         stage('Example Build') {
             
             when {
-                allOf{ 
-                    script{
-                        parallelStages
-                        }
+                expresion{
+                    allOf{ 
+                        script{
+                            parallelStages
+                            }
+                    }
                 }
             }
             steps {
