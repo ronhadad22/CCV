@@ -19,8 +19,10 @@ pipeline {
             
             when {
                 allOf{ 
-                    parallelStages
+                    script{
+                        parallelStages
                         }
+                }
             }
             steps {
  //               build(job: 'test/master', wait: false, propagate: false)
