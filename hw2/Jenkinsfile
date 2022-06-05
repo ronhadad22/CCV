@@ -1,10 +1,21 @@
+@NonCPS
+def foo() {
+  def version = "1.2.4"
+  def pattern = ~/(\d{1,3})\.(\d{1,3})\.\d{1,4}$/
+  def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
+  println "Version ${version} -> new ${newVersion}"
+}
+
 
 pipeline {
     agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
     stages {
+        
         stage('Example Build') {
             steps {
-                sh 'echo dana'
+               script {
+                   foo()
+                }
             }
         }
     }
