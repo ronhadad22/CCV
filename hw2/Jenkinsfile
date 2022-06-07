@@ -1,11 +1,10 @@
 @NonCPS
 def foo() {
-  def version = data
+  def version = readFile(file: 'hw2/version')
   def pattern = ~/(\d{1,3})\.(\d{1,3})\.\d{1,4}$/
   def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
   println "Version ${version} -> new ${newVersion}"
 }
-def data = ""
 
 
 pipeline {
@@ -15,7 +14,6 @@ pipeline {
         stage('Example Build') {
             steps {
                script {
-                   data = readFile(file: 'hw2/version')
                    foo()
                 }
             }
