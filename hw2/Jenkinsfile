@@ -1,10 +1,11 @@
 @NonCPS
 def foo() {
-  def version = "1.2.4"
+  def version = data
   def pattern = ~/(\d{1,3})\.(\d{1,3})\.\d{1,4}$/
   def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
   println "Version ${version} -> new ${newVersion}"
 }
+def data = ""
 
 
 pipeline {
@@ -14,7 +15,7 @@ pipeline {
         stage('Example Build') {
             steps {
                script {
-                   def data = readFile(file: 'version')
+                   data = readFile(file: 'version')
                    foo()
                 }
             }
