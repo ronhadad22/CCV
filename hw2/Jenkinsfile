@@ -18,15 +18,15 @@ pipeline {
                script {
                  String curVer =readFile(file: "${service}/version")
                    def updatedVer = foo(curVer)
-                   writeFile(file: "${service}/version", text: "${updatedVer}")
-                   
-                   cd "${WORKSPACE}"
-                   git status 
-                   git add "${service}/version"
-                 git commit -m "Added to ${service} version file the new ver: ${updatedVer} automated Jenikins job"
-                   git push
+                   writeFile(file: "${service}/version", text: "${updatedVer}")             
           
 
+                }
+                dir("${WORKSPACE}") {
+                   git status 
+                   git add "${service}/version"
+                   git commit -m "Added to ${service} version file the new ver: ${updatedVer} automated Jenikins job"
+                   git push
                 }
             }
         }
