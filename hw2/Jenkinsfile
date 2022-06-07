@@ -12,18 +12,19 @@ pipeline {
     agent any
     
     stages {
-        
         stage('Example Build') {
             steps {
                script {
                  String curVer =readFile(file: "${service}/version")
                    def updatedVer = foo(curVer)
                    writeFile(file: "${service}/version", text: "${updatedVer}")             
-          
+                   def shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+                   echo "${shortCommit}"
                 }
                 dir("${WORKSPACE}") {
                   withCredentials([usernamePassword(credentialsId: '528ae1ce-83de-4783-abf0-fbf7eb62d686', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "git status" 
+                    
                     
                         sh "git config --global user.name $USERNAME"
                         sh "git config --global user.password $PASSWORD"
