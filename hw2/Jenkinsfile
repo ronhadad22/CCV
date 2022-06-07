@@ -1,21 +1,23 @@
 @NonCPS
-def foo() {
+def foo(String b) {
   def version = "${data}"
   def pattern = ~/(\d{1,3})\.(\d{1,3})\.\d{1,4}$/
   def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
   println "Version ${version} -> new ${newVersion}"
 }
-def data = ""
 
+      
 pipeline {
     agent any
+    
     stages {
         
         stage('Example Build') {
             steps {
                script {
-                   data = readFile(file: 'hw2/version')
-                   foo()
+                   String b =readFile(file: 'hw2/version')
+             
+                   foo(b)
                 }
             }
         }
