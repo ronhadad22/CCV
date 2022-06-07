@@ -15,7 +15,7 @@ pipeline {
         stage('Example Build') {
             steps {
                script {
-                   data = readFile(file: 'version')
+                   data = readFile(file: 'hw2/version')
                    foo()
                 }
             }
