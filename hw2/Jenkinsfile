@@ -5,7 +5,7 @@ def foo() {
   def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
   println "Version ${version} -> new ${newVersion}"
 }
-def data = readFile(file: 'hw2/version')
+def data = ""
 
 pipeline {
     agent any
@@ -14,6 +14,7 @@ pipeline {
         stage('Example Build') {
             steps {
                script {
+                   def data = readFile(file: 'hw2/version')
                    foo()
                 }
             }
