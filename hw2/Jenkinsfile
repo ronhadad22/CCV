@@ -23,10 +23,11 @@ pipeline {
 
                 }
                 dir("${WORKSPACE}") {
-                   git status 
-                   git add "${service}/version"
-                   git commit -m "Added to ${service} version file the new ver: ${updatedVer} automated Jenikins job"
-                   git push
+                  
+                   sh "git status" 
+                   sh "git add ${service}/version"
+                   sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
+                   sh "git push"
                 }
             }
         }
