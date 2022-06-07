@@ -22,13 +22,13 @@ pipeline {
           
                 }
                 dir("${WORKSPACE}") {
-
-                   sh "git status" 
-                   sh "git add ${service}/version"
-                   sh "git config --global --edit"
-                   sh "git commit --amend --reset-author"
-                   sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
-                   sh "git push origin master"
+                  withCredentials([sshUserPrivateKey(credentialsId: '528ae1ce-83de-4783-abf0-fbf7eb62d686', keyFileVariable: 'SSH_KEY')]) {
+                        sh "git status" 
+                        sh "git add ${service}/version"
+                        sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
+                        sh "git push origin master"
+                   }
+                
                 }
             }
         }
