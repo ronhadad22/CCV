@@ -22,7 +22,8 @@ pipeline {
           
                 }
                 dir("${WORKSPACE}") {
-                  
+                   sh "git config --global --edit"
+                   sh "git commit --amend --reset-author"
                    sh "git status" 
                    sh "git add ${service}/version"
                    sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
