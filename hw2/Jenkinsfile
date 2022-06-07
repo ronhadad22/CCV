@@ -20,14 +20,13 @@ pipeline {
                    def updatedVer = foo(curVer)
                    writeFile(file: "${service}/version", text: "${updatedVer}")             
           
-
                 }
                 dir("${WORKSPACE}") {
                   
                    sh "git status" 
                    sh "git add ${service}/version"
                    sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
-                   sh "git push"
+                   sh "git push origin"
                 }
             }
         }
