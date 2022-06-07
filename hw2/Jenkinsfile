@@ -2,7 +2,7 @@
 def String foo(String curVer) {
   def version = "${curVer}"
   def pattern = ~/(\d{1,3})\.(\d{1,3})\.\d{1,4}$/
-  def newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
+  String newVersion = version.replaceFirst(pattern) { _,major,minor -> "${major}.${(minor as int) + 1}.0"}
   println "Version ${version} -> new ${newVersion}"
   return newVersion
 }
@@ -16,8 +16,8 @@ pipeline {
             steps {
                script {
                  String curVer =readFile(file: "${service}/version")
-                   def updatedVer = foo(curVer)
-                   echo "${updatedVer}".trim()
+                   String updatedVer = foo(curVer) 
+                   echo "${updatedVer}"
                    writeFile(file: "${service}/version", text: "${updatedVer}")   
                    def shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                    def finalVersion = "${updatedVer}-${shortCommit}".trim()
