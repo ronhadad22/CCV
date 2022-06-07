@@ -17,7 +17,7 @@ pipeline {
                script {
                  String curVer =readFile(file: "${service}/version")
                    def updatedVer = foo(curVer)
-                   echo "${updatedVer}"
+                   echo "${updatedVer}".trim()
                    writeFile(file: "${service}/version", text: "${updatedVer}")   
                    def shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                    def finalVersion = "${updatedVer}-${shortCommit}".trim()
