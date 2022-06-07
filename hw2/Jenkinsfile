@@ -24,7 +24,8 @@ pipeline {
                 dir("${WORKSPACE}") {
                   withCredentials([usernamePassword(credentialsId: '528ae1ce-83de-4783-abf0-fbf7eb62d686', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "git status" 
-                        sh "git config user.name $USERNAME"
+                    
+                        sh "git config --global user.name $USERNAME"
                         sh "git config user.password $PASSWORD"
                         sh "git add ${service}/version"
                         sh "git commit -m 'Added to  version file the new ver: automated Jenikins job'"
