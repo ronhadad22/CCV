@@ -21,7 +21,7 @@ pipeline {
                    writeFile(file: "${service}/version", text: "${updatedVer}")
                    
                    cd "${WORKSPACE}"
-                   git status # should show <file> as changed or unversioned
+                   git status 
                    git add "${service}/version"
                  git commit -m "Added to ${service} version file the new ver: ${updatedVer} automated Jenikins job"
                    git push
