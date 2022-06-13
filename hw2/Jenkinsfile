@@ -24,6 +24,7 @@ pipeline {
                    def finalVersion = "${updatedVer}-${currentBuild.number}-${shortCommit}".trim()
  //                  sh "git clone https://github.com/argoproj/argo-helm.git"
                    sh "ls"
+                   sh "yq --version"
                    echo "ron ${finalVersion}"
                    sh "yq eval '.global.image.repository = rob' hw2/valuescopy.yaml"
                 }
