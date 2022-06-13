@@ -24,6 +24,8 @@ pipeline {
                    def finalVersion = "${updatedVer}-${currentBuild.number}-${shortCommit}".trim()
  //                  sh "git clone https://github.com/argoproj/argo-helm.git"
                    sh "ls"
+                   echo "rr //"
+                   echo 'rr //'
                    echo "$PATH"
                    sh "/opt/homebrew/bin/yq --version"
                    echo "ron ${finalVersion}"
