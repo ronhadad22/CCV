@@ -22,10 +22,10 @@ pipeline {
                    writeFile(file: "${service}/version", text: "${updatedVer}")   
                    def shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                    def finalVersion = "${updatedVer}-${currentBuild.number}-${shortCommit}".trim()
-                   sh "git clone https://github.com/argoproj/argo-helm.git"
+ //                  sh "git clone https://github.com/argoproj/argo-helm.git"
                    sh "ls"
                    echo "${finalVersion}"
-                   sh "yq eval '.global.image.repository = "rob"' valuescopy.yaml"
+                   sh "yq eval '.global.image.repository = "rob"' hw2/valuescopy.yaml"
                 }
                 dir("${WORKSPACE}") {
                   withCredentials([usernamePassword(credentialsId: '528ae1ce-83de-4783-abf0-fbf7eb62d686', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
