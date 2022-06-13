@@ -29,7 +29,7 @@ pipeline {
                    echo "$PATH"
                    sh "/opt/homebrew/bin/yq --version"
                    echo "ron ${finalVersion}"
-                   sh "/opt/homebrew/bin/yq eval \".global.image.repository = \"rob\"\" hw2/valuescopy.yaml"
+                   sh "/opt/homebrew/bin/yq eval '.global.image.repository =\"rob\" ' hw2/valuescopy.yaml"
                 }
                 dir("${WORKSPACE}") {
                   withCredentials([usernamePassword(credentialsId: '528ae1ce-83de-4783-abf0-fbf7eb62d686', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
